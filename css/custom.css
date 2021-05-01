@@ -1,0 +1,108 @@
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.border-l-gray {
+  border: solid 1px #cdcfd1;
+}
+.card {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #fff;
+  margin-bottom: 12px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #e0e2e3;
+}
+
+input[type="submit"] {
+  font-size: 15px;
+
+  text-decoration: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: 0;
+  color: #74797e;
+  border: solid 1px white;
+  margin: 10px 0px 10px 0px;
+  border-radius: 0px 10px 0px 10px;
+  background-color: #cdcfd1;
+}
+input[type="submit"]:hover {
+  background-color: #999;
+  color: #f2f3f3;
+}
+.t-center {
+  text-align: center;
+}
+form {
+  text-align: center;
+  background-color: #f2f3f3;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  border-radius: 20px;
+}
+.fileds-wrapper {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.m-top-150 {
+  margin-top: 150px;
+}
+.t-white {
+  color: white;
+}
+.form-control {
+  padding: 5px 0px 3px 0px;
+  text-align: left;
+  padding-left: 50px;
+}
+
+input {
+  width: 200px;
+}
+input[type="submit"] {
+  width: 100px;
+}
+/*messages*/
+.form-control.success input {
+  border: 1px solid var(--success-color);
+}
+.form-control.error input {
+  border: 1px solid var(--error-color);
+}
+
+.form-control small {
+  color: var(--error-color);
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+/*Reponsive media queries - tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  input {
+    width: 150px;
+  }
+  form {
+    width: 320px;
+  }
+}
+/*Reponsive media queries - mobile */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  form {
+    width: 320px;
+    margin: 0 auto;
+  }
+}
