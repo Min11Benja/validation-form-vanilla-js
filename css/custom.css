@@ -77,10 +77,17 @@ input[type="submit"] {
 /*messages*/
 .form-control.success input {
   border: 1px solid var(--success-color);
+  background: url(../img/iconmonstr-check-mark-9.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 .form-control.error input {
   border: 1px solid var(--error-color);
+  background: url(../img/iconmonstr-x-mark-8.svg);
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 .form-control input:focus-visible {
@@ -100,9 +107,16 @@ input[type="submit"] {
   color: var(--error-color);
   visibility: hidden;
 }
-
 .form-control.error small {
   visibility: visible;
+}
+
+img.svg-icon-size {
+  width: 12px;
+}
+input {
+  font-family: "poppinslight";
+  padding: 3px;
 }
 
 /*Reponsive media queries - tablet */
