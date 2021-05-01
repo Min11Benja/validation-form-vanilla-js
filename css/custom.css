@@ -73,12 +73,27 @@ input {
 input[type="submit"] {
   width: 100px;
 }
+
 /*messages*/
 .form-control.success input {
   border: 1px solid var(--success-color);
 }
+
 .form-control.error input {
   border: 1px solid var(--error-color);
+}
+
+.form-control input:focus-visible {
+  outline-color: 1px solid var(--success-color);
+  outline-style: double;
+}
+.form-control.success input:focus-visible {
+  outline-color: var(--success-color);
+  outline-style: double;
+}
+.form-control.error input:focus-visible {
+  outline-color: var(--error-color);
+  outline-style: double;
 }
 
 .form-control small {
