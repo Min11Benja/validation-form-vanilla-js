@@ -51,6 +51,34 @@ function togglePasswordType(eyeOne){
     // console.log("inpput type changed to password");
  }
 }
+function getFieldName(input){
+    const formControlParent = input.parentElement;
+    const field = formControlParent.querySelector('label');
+    const fieldName = field.textContent.slice(0, -1);
+    return fieldName;
+}
+function checkInputLength(input, min, max){
+    if(input.value.length < min){
+        showErrorMessage(input,`${getFieldName(input)} must be at least ${min} characters`);
+    }else if(input.value.length > max){
+        showErrorMessage(input,`${getFieldName(input)} must be less than ${max} characters`);
+    }else{
+        showSuccess(input);
+    }
+}
+function checkRequired(inputArr){
+    inputArr.forEach(function(input){
+        
+        //console.log(field.textContent);
+
+        if(input.value.trim() === ''){
+            showErrorMessage(input, `${getFieldName(input)} is required`);
+        }else{
+            showSuccess(input);
+        }
+    });    
+}
+
 
 /* EVENT LISTENERS */
 eyeTwo.addEventListener('click',function(e){
@@ -62,29 +90,19 @@ eyeOne.addEventListener('click',function(e){
     togglePasswordType(eyeOne);
 });
 
-//add an event listener on form submit buton
 form.addEventListener('submit', function(e){
     e.preventDefault();
-    
-    if(formUserName.value === ''){
-        showErrorMessage(formUserName, "Username is required");
-    }else{
-        showSuccess(formUserName);
-    }
 
-    if(formEmail.value === ''){
-        showErrorMessage(formEmail, "Email is required");
-    }else if( isValidEmail(formEmail.value) === false ){
+    checkRequired([formUserName, formEmail,formPassword, formConfirmPassword ]);          
+    checkInputLength(formUserName, 3, 15);
+    checkInputLength(formPassword, 6, 20);
+
+    if( isValidEmail(formEmail.value) === false ){
         showErrorMessage(formEmail, "Please use a valid email");
     }else{
-        showSuccess(formEmail);
+        showSuccess(formEmail);       
     }
-    
-    if(formPassword.value === ''){
-        showErrorMessage(formPassword, "Password is required");
-    }else{
-        showSuccess(formPassword);
-    }
+       
 
     if(formConfirmPassword.value === ''){
         showErrorMessage(formConfirmPassword, "Password is required");
@@ -93,7 +111,6 @@ form.addEventListener('submit', function(e){
     }else{
         showSuccess(formConfirmPassword);
     }
-
       
     console.log("submit");
     
