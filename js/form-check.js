@@ -7,13 +7,13 @@ const formConfirmPassword = document.getElementById('fconf-pswd');
 const eyeOne = document.getElementById('icon-eye-1');
 const eyeTwo = document.getElementById('icon-eye-2');
 
-function isValidEmail(mail) 
+function checkEmail(input) 
 {
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+ if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(input.value))
   {
-    return (true)
+    showSuccess(input);
   }else{
-    return (false)
+    showErrorMessage(input, "Please use a valid email");
   }    
     
 }
@@ -78,7 +78,14 @@ function checkRequired(inputArr){
         }
     });    
 }
-
+function checkPasswordMatch(pswd1, pswd2){
+  
+   if(pswd1.value !== pswd2.value ){
+        showErrorMessage(pswd2, "Password does not match");
+    }else{
+        showSuccess(pswd2);
+    }
+}
 
 /* EVENT LISTENERS */
 eyeTwo.addEventListener('click',function(e){
@@ -96,21 +103,8 @@ form.addEventListener('submit', function(e){
     checkRequired([formUserName, formEmail,formPassword, formConfirmPassword ]);          
     checkInputLength(formUserName, 3, 15);
     checkInputLength(formPassword, 6, 20);
-
-    if( isValidEmail(formEmail.value) === false ){
-        showErrorMessage(formEmail, "Please use a valid email");
-    }else{
-        showSuccess(formEmail);       
-    }
-       
-
-    if(formConfirmPassword.value === ''){
-        showErrorMessage(formConfirmPassword, "Password is required");
-    }else if(formPassword.value !== formConfirmPassword.value ){
-        showErrorMessage(formConfirmPassword, "Password does not match");
-    }else{
-        showSuccess(formConfirmPassword);
-    }
+    checkEmail(formEmail);
+    checkPasswordMatch(formPassword,formConfirmPassword);   
       
     console.log("submit");
     

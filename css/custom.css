@@ -118,7 +118,17 @@ input {
   font-family: "poppinslight";
   padding: 3px;
 }
-
+.summary-text {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f2f3f3;
+}
+.summary-text ul {
+  padding-left: 30px;
+}
+.summary-text ul li {
+  font-size: 11px;
+}
 /*Reponsive media queries - tablet */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   input {
